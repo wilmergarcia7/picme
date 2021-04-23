@@ -21,7 +21,7 @@ class LoginPage extends React.Component{
 		let UsrPwd = this.state.UsrPwd;
 
 		axios.defaults.withCredentials = true;
-		axios.post("http://10.53.0.55/api/usuarios/login.php", {
+		axios.post("https://api.movil2.cointla.com/api/usuarios/login.php", {
 			UsrUsr: UsrUsr,
 			UsrPwd: UsrPwd
 		}).then(res => {
@@ -29,6 +29,7 @@ class LoginPage extends React.Component{
 
 			if(jres.status === "OK"){
 				window.location = "#/colecciones";
+				window.localStorage.setItem("logued","OK");
 			}else{
 				this.setState({errorMessage: jres.payload.message});
 			}
